@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/screen/screen1.dart';
 
 import '../provider/button_provider.dart';
 
@@ -21,17 +20,21 @@ class _Screen2State extends State<Screen2> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 150),
+              padding: const EdgeInsets.only(top: 300),
               child: TextField(
                   controller: namecontroller,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(30))),
-                    prefixIcon: Icon(Icons.contact_page, color: Colors.black87),
-                    label: Text('Name'),
+                        borderRadius: BorderRadius.all(Radius.elliptical(5, 5))),
+                    focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(width: 3, color: Colors.black),
+                  ),
+                    prefixIcon: Icon(Icons.task, color: Colors.black87),
+                    hintText: 'Task',
+                    label: Text('Task'),
                   )),
             ),
             const SizedBox(
@@ -41,12 +44,18 @@ class _Screen2State extends State<Screen2> {
               controller: placecontroller,
               decoration: const InputDecoration(
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(30))),
+                      borderRadius: BorderRadius.all(Radius.elliptical(5, 5))),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(width: 3, color: Colors.black),
+                  ),
+
                   prefixIcon: Icon(
-                    Icons.place,
+                    Icons.description,
                     color: Colors.black87,
                   ),
-                  label: Text('Location')),
+                  hintText: 'Description',
+                  label: Text('Description')),
+
             ),
             const SizedBox(
               height: 30,
@@ -56,7 +65,7 @@ class _Screen2State extends State<Screen2> {
                     ElevatedButton.styleFrom(backgroundColor: Colors.black87),
                 onPressed: () {
                   context.read<ButtonProvider>().addTask(
-                      context, namecontroller.text,placecontroller.text);
+                      context, namecontroller.text, placecontroller.text);
                   print(namecontroller);
                 },
                 child: const Text('ADD'))

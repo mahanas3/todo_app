@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../screen/screen1.dart';
-import '../screen/screen2.dart';
 
 class ButtonProvider extends ChangeNotifier {
   final List<Map<String, dynamic>> task = [];

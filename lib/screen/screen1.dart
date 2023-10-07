@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:todo_app/provider/button_provider.dart';
 import 'package:todo_app/screen/screen2.dart';
 
 class Screen1 extends StatefulWidget {
@@ -16,45 +14,58 @@ class _Screen1State extends State<Screen1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.black12,
-          title: const Center(
-              child: Text(
-            'ToDo - WishFlow',
-            style:
-                TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
-          )),
-          actions: const [Icon(Icons.more_vert)],
-        ),
-        body: Column(
+      appBar: AppBar(
+        backgroundColor: Colors.white38,
+        title: const Center(
+            child: Text(
+          'ToDo - WishFlow',
+          style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
+        )),
+        actions: const [Icon(Icons.more_vert)],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
           children: [
-            Expanded(
-              child: Container(
-                color: Colors.blueGrey,
-                child: const SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Icon(Icons.star),
-                        ],
-                      ),
-                      Text('Go Premium',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20)),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text('Go beyond the limits',
-                          style: TextStyle(color: Colors.white)),
-                      Text(
-                        'get exclusive featutres!',
-                        style: TextStyle(color: Colors.white),
-                      )
-                    ],
-                  ),
+            Container(
+              height: 250,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: const Color(0xff494F55)),
+              child: const Padding(
+                padding: EdgeInsets.only(top: 40),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: 30),
+                          child: CircleAvatar(
+                              backgroundColor: Colors.black12,
+                              child: Icon(Icons.star)),
+                        ),
+                      ],
+                    ),
+                    Text('Go Premium',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30)),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text('Go beyond the limits',
+                        style: TextStyle(color: Colors.white, fontSize: 16)),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'get exclusive featutres!',
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -62,160 +73,121 @@ class _Screen1State extends State<Screen1> {
               height: 20,
             ),
             const Padding(
-              padding: EdgeInsets.only(right: 200),
+              padding: EdgeInsets.only(right: 220),
               child: Text(
                 'Tasks',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
               ),
             ),
             const SizedBox(
               height: 20,
             ),
-            Expanded(
-              child: Row(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.blueGrey),
-                    child: Column(
-                      children: [
-                        const Icon(Icons.card_giftcard),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        const Text(
-                          'Work',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: 80,
-                              height: 50,
-                              child: InkWell(
-                                onTap: () {},
-                                child: const Card(
-                                  color: Colors.black87,
-                                  child: Center(
-                                    child: Text('2 Left',
-                                        style: TextStyle(color: Colors.white)),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            const SizedBox(
-                              height: 50,
-                              width: 80,
-                              child: Card(
-                                child: Center(child: Text('5 Done')),
-                              ),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  Expanded(
-                    child: Container(
-                      decoration: const BoxDecoration(
-                          color: Colors.blueGrey,
-                          borderRadius: BorderRadius.all(Radius.circular(30))),
-                      child: const Column(
-                        children: [
-                          Icon(Icons.shopping_cart),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          Text(
-                            'Shopping',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Row(
+            widget.task2 == null
+                ? const Text('fcvb')
+                : GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: widget.task2?.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      print(widget.task2);
+                      return Container(
+                        height: 300,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: const Color(0xff494F55)),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Column(
                             children: [
-                              SizedBox(
-                                height: 50,
-                                width: 80,
-                                child: Card(
-                                  color: Colors.black87,
-                                  child: Center(
-                                      child: Text('0 Left',
-                                          style:
-                                              TextStyle(color: Colors.white))),
-                                ),
+                              const Icon(Icons.shopping_cart,
+                                  color: Colors.white),
+                              const SizedBox(
+                                height: 20,
                               ),
-                              SizedBox(
-                                width: 10,
+                              Text(
+                                widget.task2?[index]['taskName'],
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 30),
                               ),
-                              SizedBox(
-                                height: 50,
-                                width: 80,
-                                child: Card(
-                                  child: Center(child: Text('3 Done')),
-                                ),
-                              )
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                widget.task2?[index]['location'],
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 80,
+                                    height: 50,
+                                    child: InkWell(
+                                      onTap: () {},
+                                      child: const Card(
+                                        shape: OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(20))),
+                                        elevation: 8,
+                                        shadowColor: Colors.white38,
+                                        color: Colors.black87,
+                                        child: Center(
+                                          child: Text('2 Left',
+                                              style: TextStyle(
+                                                  color: Colors.white)),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 5,
+                                  ),
+                                  const SizedBox(
+                                    height: 50,
+                                    width: 80,
+                                    child: Card(
+                                      shape: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20))),
+                                      child: Center(child: Text('5 Done')),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ],
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
+                          ),
+                        ),
+                      );
+                    },
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: 300,
+                            childAspectRatio: 1.1 / 1.3,
+                            crossAxisSpacing: 20,
+                            mainAxisSpacing: 20),
+                  ),
             const SizedBox(
               height: 20,
             ),
-            Expanded(
-              child: widget.task2 == null
-                  ? const Text('fcvb')
-                  : Container(
-                      decoration: const BoxDecoration(
-                          color: Colors.blueGrey,
-                          borderRadius: BorderRadius.all(Radius.circular(30))),
-                      child: ListView.builder(
-                        itemCount: widget.task2?.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          print(widget.task2);
-                          return ListTile(
-                            title: Text(widget.task2?[index]['taskName']),
-                            subtitle: Text(widget.task2?[index]['location']),
-                          );
-                        },
-                      ),
-                    ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            FloatingActionButton(
-              backgroundColor: Colors.blueGrey,
-              child: const Icon(Icons.add),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Screen2()));
-                //context.read<ButtonProvider>().provider(context);
-              },
-            )
           ],
-        ));
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blueGrey,
+        child: const Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const Screen2()));
+          //context.read<ButtonProvider>().provider(context);
+        },
+      ),
+    );
   }
 }
