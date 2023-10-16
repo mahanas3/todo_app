@@ -89,7 +89,6 @@ class _Screen1State extends State<Screen1> {
                     shrinkWrap: true,
                     itemCount: widget.task2?.length,
                     itemBuilder: (BuildContext context, int index) {
-                      print(widget.task2);
                       return Container(
                         height: 300,
                         decoration: BoxDecoration(
@@ -185,7 +184,6 @@ class _Screen1State extends State<Screen1> {
         onPressed: () {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const Screen2()));
-          //context.read<ButtonProvider>().provider(context);
         },
       ),
     );
